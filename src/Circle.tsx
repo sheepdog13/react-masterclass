@@ -21,7 +21,7 @@ interface CircleProps {
 }
 
 function Circle({ bgColor, borderColor, text = "default text" }: CircleProps) {
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(1); // 초기값을 가지고 number임을 추론한다.
   return (
     <Contaniner bgColor={bgColor} borderColor={borderColor ?? bgColor}>
       {text}
