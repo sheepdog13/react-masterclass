@@ -213,6 +213,7 @@ function Coin() {
                 <Chart />
               </Route>
             </Switch>
+            {/* commit */}
           </>
         )}
       </Container>
