@@ -2,6 +2,7 @@ import Circle from "Circle";
 import Router from "Router";
 import React, { useState } from "react";
 import styled, { createGlobalStyle, keyframes } from "styled-components";
+import { ReactQueryDevtools } from "react-query/devtools";
 /*
 const Father = styled.div`
   display: flex;
@@ -203,6 +204,7 @@ function App() {
       </form> */}
       <GlobalStyle />
       <Router />
+      <ReactQueryDevtools initialIsOpen={true} />
     </>
   );
 }
