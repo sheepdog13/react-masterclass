@@ -1,8 +1,11 @@
 import Circle from "Circle";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "theme";
 import Router from "Router";
 import React, { useState } from "react";
 import styled, { createGlobalStyle, keyframes } from "styled-components";
 import { ReactQueryDevtools } from "react-query/devtools";
+
 /*
 const Father = styled.div`
   display: flex;
@@ -94,20 +97,7 @@ const H1 = styled.h1`
   color: ${(props) => props.theme.textColor};
 `;
 
-function App() {
-  const [value, setValue] = useState("");
-  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const {
-      currentTarget: { value },
-    } = event;
-    setValue(value);
-  };
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log("hello", value);
-  };
-
-  const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&display=swap');
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -170,7 +160,20 @@ function App() {
   }
 
   `;
-
+function App() {
+  /* const [value, setValue] = useState("");
+  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
+    const {
+      currentTarget: { value },
+    } = event;
+    setValue(value);
+  };
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("hello", value); 
+  }; */
+  const [isDark, setIsDark] = useState(false);
+  const toggleDark = () => setIsDark((current) => !current);
   return (
     // <Father>
     //   <Box bgColor="teal" />
@@ -201,10 +204,12 @@ function App() {
           onChange={onChange}
         />
         <button>Log in</button>
-      </form> */}
-      <GlobalStyle />
-      <Router />
-      <ReactQueryDevtools initialIsOpen={true} />
+      </form> */}{" "}
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <GlobalStyle />
+        <Router toggleDark={toggleDark} />
+        <ReactQueryDevtools initialIsOpen={true} />{" "}
+      </ThemeProvider>
     </>
   );
 }
