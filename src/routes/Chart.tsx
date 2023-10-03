@@ -18,8 +18,12 @@ interface CharProps {
 }
 
 function Chart({ coinId }: CharProps) {
-  const { isLoading, data } = useQuery<IHistorical[]>(["ohlcv", coinId], () =>
-    fetchCoinHistory(coinId)
+  const { isLoading, data } = useQuery<IHistorical[]>(
+    ["ohlcv", coinId],
+    () => fetchCoinHistory(coinId),
+    {
+      refetchInterval: 100000,
+    }
   );
   return (
     <>
@@ -30,7 +34,7 @@ function Chart({ coinId }: CharProps) {
           type="line"
           series={[
             {
-              name: "sales",
+              name: "price",
               data: data?.map((price) => +price.close) ?? [],
             },
           ]}
@@ -41,6 +45,42 @@ function Chart({ coinId }: CharProps) {
             chart: {
               height: 500,
               width: 500,
+              toolbar: {
+                show: false,
+              },
+              background: "none",
+            },
+            grid: {
+              show: false,
+            },
+            stroke: {
+              curve: "smooth",
+              width: 4,
+            },
+            yaxis: {
+              show: false,
+            },
+            xaxis: {
+              labels: { show: false },
+              axisBorder: { show: false },
+              axisTicks: { show: false },
+              type: "datetime",
+              categories: data?.map((price) =>
+                new Date(price.time_close * 1000).toISOString()
+              ),
+            },
+            fill: {
+              type: "gradient",
+              gradient: {
+                gradientToColors: ["#0be881"],
+                stops: [0, 100],
+              },
+            },
+            colors: ["#0fbcf9"],
+            tooltip: {
+              y: {
+                formatter: (value) => `$${value.toFixed(3)}`,
+              },
             },
           }}
         />
