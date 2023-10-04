@@ -5,7 +5,8 @@ import Router from "Router";
 import React, { useState } from "react";
 import styled, { createGlobalStyle, keyframes } from "styled-components";
 import { ReactQueryDevtools } from "react-query/devtools";
-
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "atom";
 /*
 const Father = styled.div`
   display: flex;
@@ -172,8 +173,7 @@ function App() {
     event.preventDefault();
     console.log("hello", value); 
   }; */
-  const [isDark, setIsDark] = useState(false);
-  const toggleDark = () => setIsDark((current) => !current);
+  const isDark = useRecoilValue(isDarkAtom);
   return (
     // <Father>
     //   <Box bgColor="teal" />
@@ -207,7 +207,7 @@ function App() {
       </form> */}{" "}
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
         <GlobalStyle />
-        <Router toggleDark={toggleDark} />
+        <Router />
         <ReactQueryDevtools initialIsOpen={true} />{" "}
       </ThemeProvider>
     </>
