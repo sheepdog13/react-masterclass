@@ -4,8 +4,10 @@ import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { isDarkAtom } from "atom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -25,7 +27,6 @@ const CoinList = styled.ul``;
 const Coin = styled.li`
   background-color: ${(props) => props.theme.cardBgColor};
   color: ${(props) => props.theme.textColor};
-  border: 1px solid white;
   border-radius: 15px;
   margin-bottom: 10px;
   a {
@@ -66,8 +67,28 @@ interface Icoin {
   type: string;
 }
 
+const ToggleWrapper = styled.button`
+  position: fixed;
+  z-index: 999999;
+  bottom: 4%;
+  left: 3%;
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.accentColor};
+
+  font-size: 25px;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+`;
+
 function Coins() {
-  const setDarkAtom = useSetRecoilState(isDarkAtom);
+  const [darkAtom, setDarkAtom] = useRecoilState(isDarkAtom);
+
   const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
   const { isLoading, data } = useQuery<Icoin[]>("allCoins", fetchCoins);
   /*const [coins, setCoins] = useState<CoinInterface[]>([]);
@@ -87,7 +108,13 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>코인</Title>
-        <button onClick={toggleDarkAtom}>Toggle Mode</button>
+        <ToggleWrapper onClick={toggleDarkAtom}>
+          {darkAtom ? (
+            <FontAwesomeIcon icon={faLightbulb} />
+          ) : (
+            <FontAwesomeIcon icon={faLightbulb} />
+          )}
+        </ToggleWrapper>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>

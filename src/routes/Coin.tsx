@@ -13,6 +13,8 @@ import Price from "./Price";
 import Chart from "./Chart";
 import { useQuery } from "react-query";
 import { fetchCoinInfo, fetchCoinTickers } from "api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
 const Container = styled.div`
   padding: 0px 20px;
   max-width: 480px;
@@ -34,7 +36,7 @@ const Title = styled.h1`
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.cardBgColor};
   padding: 10px 20px;
   border-radius: 10px;
 `;
@@ -66,7 +68,8 @@ const Tab = styled.span<{ isActive: boolean }>`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.cardBgColor};
+
   padding: 7px 0px;
   border-radius: 10px;
   color: ${(props) =>
@@ -75,7 +78,22 @@ const Tab = styled.span<{ isActive: boolean }>`
     display: block;
   }
 `;
+const BtnWrap = styled.div`
+  margin-bottom: 30px;
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.accentColor};
+  font-size: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  a {
+    padding: 20px;
+  }
+`;
 const Loader = styled.span`
   text-align: center;
 `;
@@ -189,10 +207,16 @@ function Coin() {
             {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
           </Title>
         </Header>
+
         {loading ? (
           <Loader>Loading...</Loader>
         ) : (
           <>
+            <BtnWrap>
+              <Link to="/">
+                <FontAwesomeIcon icon={faHouse} />
+              </Link>
+            </BtnWrap>
             <Overview>
               <OverviewItem>
                 <span>Rank:</span>

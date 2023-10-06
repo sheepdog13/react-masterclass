@@ -128,6 +128,7 @@ const GlobalStyle = createGlobalStyle`
   /* HTML5 hidden-attribute fix for newer browsers */
   *[hidden] {
       display: none;
+
   }
   body {
     line-height: 1;
@@ -149,6 +150,8 @@ const GlobalStyle = createGlobalStyle`
   }
   *{
     box-sizing: border-box;
+  transition: background-color 1s, color 0.1s, border 0.5s;
+
   }
   body {
     font-family: 'Noto Sans', sans-serif;
