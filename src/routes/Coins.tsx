@@ -19,13 +19,13 @@ interface Icoin {
 }
 const Wrap = styled.div`
   display: flex;
-  margin: 0 auto;
-  background-color: #191729;
+  background-color: ${(props) => props.theme.bgColor};
 `;
 
 const ContentBox = styled.div`
   width: 80%;
-  margin: 20px;
+  margin-left: 20vw;
+  padding: 20px;
 `;
 
 const WelcomContent = styled.div`
@@ -33,7 +33,7 @@ const WelcomContent = styled.div`
   justify-content: flex-end;
   margin-top: 20px;
   padding: 80px 100px;
-  background-color: #1d1f33;
+  background-color: ${(props) => props.theme.cardBgColor};
 `;
 const WelTextBox = styled.div`
   padding-top: 50px;
@@ -48,15 +48,15 @@ const WelDesc = styled.p`
   padding-top: 20px;
   color: rgb(90, 97, 122);
 `;
-const ListTitle = styled.div`
+const ListTitleBox = styled.div`
   margin-top: 10px;
   height: 50px;
-  background-color: #1d1f33;
+  background-color: ${(props) => props.theme.cardBgColor};
 `;
 const CoinListBox = styled.div`
   height: 1000px;
   margin-top: 5px;
-  background-color: #1d1f33;
+  background-color: ${(props) => props.theme.cardBgColor};
 `;
 function Coins() {
   const { isLoading, data } = useQuery<Icoin[]>("allCoins", fetchCoins);
@@ -78,7 +78,7 @@ function Coins() {
             </WelDesc>
           </WelTextBox>
         </WelcomContent>
-        <ListTitle></ListTitle>
+        <ListTitleBox></ListTitleBox>
         <CoinListBox></CoinListBox>
       </ContentBox>
     </Wrap>
