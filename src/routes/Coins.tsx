@@ -69,11 +69,10 @@ const CoinListBox = styled.div`
   gap: 4px;
 `;
 const Coin = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
   a {
     transition: none;
+    flex-wrap: wrap;
+    align-content: space-between;
     display: flex;
     padding: 15px;
     height: 150px;
@@ -90,6 +89,10 @@ const CoinInfoBox = styled.div`
   flex-direction: column;
   gap: 8px;
 `;
+const CoinNameBox = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 const Img = styled.img`
   display: flex;
@@ -98,6 +101,10 @@ const Img = styled.img`
   margin-right: 5px;
   justify-content: center;
   align-items: center;
+`;
+
+const CurrentPrice = styled.h1`
+  font-size: 20px;
 `;
 
 function Coins() {
@@ -124,13 +131,15 @@ function Coins() {
                     }}
                   >
                     <CoinInfoBox>
-                      <Img
-                        src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
-                      />
-                      <span>{coin.name} &rarr;</span>
-                      <h1>{coin.current_price}</h1>
+                      <CoinNameBox>
+                        <Img
+                          src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                        />
+                        <span>{coin.name} &rarr;</span>
+                      </CoinNameBox>
+                      <CurrentPrice>$ {coin.current_price}</CurrentPrice>
                     </CoinInfoBox>
-                    <div>aaa</div>
+                    <div>aaaaaaaaaa</div>
                   </Link>
                 </Coin>
               ))}
