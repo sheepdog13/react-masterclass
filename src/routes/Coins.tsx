@@ -3,21 +3,39 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { fetchCoins } from "../api";
+import { fetchCoins, fetchConinsgecko } from "../api";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { isDarkAtom } from "atom";
 import WelcomComp from "components/WelcomeComp";
 import SideComp from "components/SideComp";
-import CoinListComp from "components/CoinListComp";
 
 interface Icoin {
   id: string;
-  name: string;
   symbol: string;
-  rank: number;
-  is_new: boolean;
-  is_active: boolean;
-  type: string;
+  name: string;
+  image: string;
+  current_price: number;
+  market_cap: number;
+  market_cap_rank: number;
+  fully_diluted_valuation: number;
+  total_volume: number;
+  high_24h: number;
+  low_24h: number;
+  price_change_24h: number;
+  price_change_percentage_24h: number;
+  market_cap_change_24h: number;
+  market_cap_change_percentage_24h: number;
+  circulating_supply: number;
+  total_supply: number;
+  max_supply: null;
+  ath: number;
+  ath_change_percentage: number;
+  ath_date: string;
+  atl: number;
+  atl_change_percentage: number;
+  atl_date: string;
+  roi: null;
+  last_updated: string;
 }
 const Wrap = styled.div`
   display: flex;
@@ -52,24 +70,38 @@ const CoinListBox = styled.div`
 `;
 const Coin = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  a {
+    transition: none;
+    display: flex;
+    padding: 15px;
+    height: 150px;
+    background-color: ${(props) => props.theme.cardBgColor};
+    color: ${(props) => props.theme.textColor};
+    &:hover {
+      background-color: #23253e;
+    }
+  }
+`;
+
+const CoinInfoBox = styled.div`
+  display: flex;
   flex-direction: column;
-  height: 150px;
-  padding: 20px;
-  background-color: rgb(26, 32, 53);
-  color: white;
-  gap: 12px;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
+  gap: 8px;
 `;
 
 const Img = styled.img`
-  width: 35px;
-  height: 35px;
-  margin-right: 10px;
+  display: flex;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  justify-content: center;
+  align-items: center;
 `;
 
 function Coins() {
-  const { isLoading, data } = useQuery<Icoin[]>("allCoins", fetchCoins);
+  const { isLoading, data } = useQuery<Icoin[]>("allCoins", fetchConinsgecko);
   return (
     <Wrap>
       {isLoading ? (
@@ -91,10 +123,14 @@ function Coins() {
                       state: { name: coin.name },
                     }}
                   >
-                    <Img
-                      src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
-                    />
-                    {coin.name} &rarr;
+                    <CoinInfoBox>
+                      <Img
+                        src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
+                      />
+                      <span>{coin.name} &rarr;</span>
+                      <h1>{coin.current_price}</h1>
+                    </CoinInfoBox>
+                    <div>aaa</div>
                   </Link>
                 </Coin>
               ))}

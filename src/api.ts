@@ -3,6 +3,11 @@ const BASE_URL = `https://api.coinpaprika.com/v1`;
 export function fetchCoins() {
   return fetch(`${BASE_URL}/coins`).then((response) => response.json());
 }
+export function fetchConinsgecko() {
+  return fetch(
+    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1"
+  ).then((response) => response.json());
+}
 
 export function fetchCoinInfo(coinId: string) {
   return fetch(`${BASE_URL}/coins/${coinId}`).then((response) =>
