@@ -70,7 +70,6 @@ const CoinListBox = styled.div`
 `;
 const Coin = styled.div`
   a {
-    transition: none;
     flex-wrap: wrap;
     align-content: space-between;
     display: flex;
@@ -104,7 +103,15 @@ const Img = styled.img`
 `;
 
 const CurrentPrice = styled.h1`
+  margin-top: 5px;
   font-size: 20px;
+  font-weight: 500;
+`;
+
+const PercentBox = styled.div`
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
 `;
 
 function Coins() {
@@ -139,7 +146,7 @@ function Coins() {
                       </CoinNameBox>
                       <CurrentPrice>$ {coin.current_price}</CurrentPrice>
                     </CoinInfoBox>
-                    <div>aaaaaaaaaa</div>
+                    <PercentBox>aaaaaaaaaa</PercentBox>
                   </Link>
                 </Coin>
               ))}

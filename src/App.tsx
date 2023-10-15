@@ -150,7 +150,7 @@ const GlobalStyle = createGlobalStyle`
   }
   *{
     box-sizing: border-box;
-  transition: background-color 1s, color 0.1s, border 0.5s;
+  /* transition: background-color 1s, color 0.1s, border 0.5s; */
 
   }
   body {
