@@ -75,6 +75,7 @@ const Coin = styled.div`
     display: flex;
     padding: 15px;
     height: 150px;
+    gap: 12px;
     background-color: ${(props) => props.theme.cardBgColor};
     color: ${(props) => props.theme.textColor};
     &:hover {
@@ -86,11 +87,12 @@ const Coin = styled.div`
 const CoinInfoBox = styled.div`
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+
   gap: 8px;
 `;
 const CoinNameBox = styled.div`
   display: flex;
-  flex-direction: row;
 `;
 
 const Img = styled.img`
@@ -110,8 +112,24 @@ const CurrentPrice = styled.h1`
 
 const PercentBox = styled.div`
   display: flex;
-  flex-flow: column wrap;
-  justify-content: flex-end;
+  flex-grow: 1;
+
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+const PriceChange = styled.span`
+  text-align: right;
+  margin-bottom: 5px;
+  font-size: 15px;
+  color: #5a617a;
+`;
+
+const PercentChange = styled.span`
+  text-align: right;
+
+  font-size: 24px;
+  color: ${(props) => props.color};
 `;
 
 function Coins() {
@@ -146,7 +164,20 @@ function Coins() {
                       </CoinNameBox>
                       <CurrentPrice>$ {coin.current_price}</CurrentPrice>
                     </CoinInfoBox>
-                    <PercentBox>aaaaaaaaaa</PercentBox>
+                    <PercentBox>
+                      <PriceChange>
+                        {"$" + coin.price_change_24h.toFixed(6)}
+                      </PriceChange>
+                      <PercentChange
+                        color={
+                          coin.price_change_percentage_24h <= 0
+                            ? "#DC4F45"
+                            : "#52B455"
+                        }
+                      >
+                        {coin.price_change_percentage_24h.toFixed(2) + " %"}
+                      </PercentChange>
+                    </PercentBox>
                   </Link>
                 </Coin>
               ))}
