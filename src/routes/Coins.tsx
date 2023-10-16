@@ -67,32 +67,30 @@ const CoinListBox = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 4px;
+  a:hover {
+    background-color: #23253e;
+  }
 `;
 const Coin = styled.div`
-  a {
-    flex-wrap: wrap;
-    align-content: space-between;
-    display: flex;
-    padding: 15px;
-    height: 150px;
-    gap: 12px;
-    background-color: ${(props) => props.theme.cardBgColor};
-    color: ${(props) => props.theme.textColor};
-    &:hover {
-      background-color: #23253e;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  padding: 20px;
+  height: 150px;
+  gap: 12px;
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.textColor};
 `;
 
 const CoinInfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-
-  gap: 8px;
+  gap: 10px;
 `;
-const CoinNameBox = styled.div`
+
+const CoinImgNameBox = styled.div`
   display: flex;
+  flex-direction: row;
 `;
 
 const Img = styled.img`
@@ -105,30 +103,27 @@ const Img = styled.img`
 `;
 
 const CurrentPrice = styled.h1`
-  margin-top: 5px;
   font-size: 20px;
   font-weight: 500;
 `;
 
 const PercentBox = styled.div`
   display: flex;
+  gap: 5px;
   flex-grow: 1;
-
   flex-direction: column;
-  align-items: flex-end;
+  justify-content: flex-end;
 `;
 
 const PriceChange = styled.span`
   text-align: right;
-  margin-bottom: 5px;
   font-size: 15px;
   color: #5a617a;
 `;
 
 const PercentChange = styled.span`
   text-align: right;
-
-  font-size: 24px;
+  font-size: 28px;
   color: ${(props) => props.color};
 `;
 
@@ -148,20 +143,20 @@ function Coins() {
             </ListTitleBox>
             <CoinListBox>
               {data?.slice(0, 100).map((coin) => (
-                <Coin key={coin.id}>
-                  <Link
-                    to={{
-                      pathname: `/${coin.id}`,
-                      state: { name: coin.name },
-                    }}
-                  >
+                <Link
+                  to={{
+                    pathname: `/${coin.id}`,
+                    state: { name: coin.name },
+                  }}
+                >
+                  <Coin key={coin.id}>
                     <CoinInfoBox>
-                      <CoinNameBox>
+                      <CoinImgNameBox>
                         <Img
                           src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                         />
                         <span>{coin.name} &rarr;</span>
-                      </CoinNameBox>
+                      </CoinImgNameBox>
                       <CurrentPrice>$ {coin.current_price}</CurrentPrice>
                     </CoinInfoBox>
                     <PercentBox>
@@ -178,8 +173,8 @@ function Coins() {
                         {coin.price_change_percentage_24h.toFixed(2) + " %"}
                       </PercentChange>
                     </PercentBox>
-                  </Link>
-                </Coin>
+                  </Coin>
+                </Link>
               ))}
             </CoinListBox>
           </ContentBox>
