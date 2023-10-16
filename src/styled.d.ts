@@ -11,5 +11,6 @@ declare module "styled-components" {
     borderColor: string;
     sideBarColor: string;
     modeBtnColor: string;
+    hoverColor: string;
   }
 }

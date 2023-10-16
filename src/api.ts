@@ -10,15 +10,14 @@ export function fetchConinsgecko() {
 }
 
 export function fetchCoinInfo(coinId: string) {
-  return fetch(`${BASE_URL}/coins/${coinId}`).then((response) =>
-    response.json()
-  );
+  return fetch(
+    `https://api.coingecko.com/api/v3/coins/${coinId}?localization=false`
+  ).then((response) => response.json());
 }
 
-export function fetchCoinTickers(coinId: string) {
-  return fetch(`${BASE_URL}/tickers/${coinId}`).then((response) =>
-    response.json()
-  );
+export function fetchCoinTickers(coinId: string, day: Number) {
+  return fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/ohlc?vs_currency=usd&days=${day}
+  `).then((response) => response.json());
 }
 
 export function fetchCoinHistory(coinId: string) {

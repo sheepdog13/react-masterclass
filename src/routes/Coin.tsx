@@ -15,88 +15,8 @@ import { useQuery } from "react-query";
 import { fetchCoinInfo, fetchCoinTickers } from "api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
-const Container = styled.div`
-  padding: 0px 20px;
-  max-width: 480px;
-  margin: 0 auto;
-`;
-
-const Header = styled.header`
-  height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Title = styled.h1`
-  font-size: 40px;
-  color: ${(props) => props.theme.accentColor};
-`;
-
-const Overview = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background-color: ${(props) => props.theme.cardBgColor};
-  padding: 10px 20px;
-  border-radius: 10px;
-`;
-const OverviewItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  span:first-child {
-    font-size: 10px;
-    font-weight: 400;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-  }
-`;
-const Description = styled.p`
-  margin: 20px 0px;
-`;
-
-const Tabs = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 25px 0px;
-  gap: 10px;
-`;
-
-const Tab = styled.span<{ isActive: boolean }>`
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 400;
-  background-color: ${(props) => props.theme.cardBgColor};
-
-  padding: 7px 0px;
-  border-radius: 10px;
-  color: ${(props) =>
-    props.isActive ? props.theme.accentColor : props.theme.textColor};
-  a {
-    display: block;
-  }
-`;
-const BtnWrap = styled.div`
-  margin-bottom: 30px;
-  background-color: ${(props) => props.theme.cardBgColor};
-  color: ${(props) => props.theme.accentColor};
-  font-size: 20px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  a {
-    padding: 20px;
-  }
-`;
-const Loader = styled.span`
-  text-align: center;
-`;
+import SideComp from "components/SideComp";
+import CoinCont from "components/CoinCont";
 interface RouteParams {
   coinId: string;
 }
@@ -159,109 +79,53 @@ interface PriceData {
     };
   };
 }
+const Wrap = styled.div`
+  display: flex;
+  background-color: ${(props) => props.theme.bgColor};
+`;
+const ContentBox = styled.div`
+  margin-left: 20vw;
+  padding: 20px;
+`;
+const HomeBtn = styled.div`
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme.cardBgColor};
+  &:hover {
+    background-color: ${(props) => props.theme.hoverColor};
+  }
+`;
 
 function Coin() {
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
+  const day = 365;
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
-  const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>(
+  const { isLoading: infoIsLoading, data: infoData } = useQuery<InfoData>(
     ["info", coinId],
     () => fetchCoinInfo(coinId)
   );
-  const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(
-    ["tickers", coinId],
-    () => fetchCoinTickers(coinId),
-    {
-      refetchInterval: 50000,
-    }
+  const { isLoading: tickIsLoading, data: tickData } = useQuery<InfoData>(
+    ["tick", coinId],
+    () => fetchCoinTickers(coinId, day)
   );
-
-  /* const [loading, setLoading] = useState(true);
-  const [info, setInfo] = useState<InfoData>();
-  const [priceInfo, setPriceInfo] = useState<PriceData>();
-  useEffect(() => {
-    (async () => {
-      const infoData = await (
-        await fetch(`https://api.coinpaprika.com/v1/coins/${coinId}`)
-      ).json();
-      const priceData = await (
-        await fetch(`https://api.coinpaprika.com/v1/tickers/${coinId}`)
-      ).json();
-      setInfo(infoData);
-      setPriceInfo(priceData);
-      setLoading(false);
-    })();
-  }, [coinId]); */
-  const loading = infoLoading || tickersLoading;
   return (
-    <>
-      <Container>
-        <Helmet>
-          <title>
-            {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-          </title>
-        </Helmet>
-        <Header>
-          <Title>
-            {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-          </Title>
-        </Header>
-
-        {loading ? (
-          <Loader>Loading...</Loader>
-        ) : (
-          <>
-            <BtnWrap>
-              <Link to="/">
-                <FontAwesomeIcon icon={faHouse} />
-              </Link>
-            </BtnWrap>
-            <Overview>
-              <OverviewItem>
-                <span>Rank:</span>
-                <span>{infoData?.rank}</span>
-              </OverviewItem>
-              <OverviewItem>
-                <span>Symbol:</span>
-                <span>${infoData?.symbol}</span>
-              </OverviewItem>
-              <OverviewItem>
-                <span>Price:</span>
-                <span>{tickersData?.quotes.USD.price.toFixed(2)}</span>
-              </OverviewItem>
-            </Overview>
-            <Description>{infoData?.description}</Description>
-            <Overview>
-              <OverviewItem>
-                <span>Total Suply:</span>
-                <span>{tickersData?.total_supply}</span>
-              </OverviewItem>
-              <OverviewItem>
-                <span>Max Supply:</span>
-                <span>{tickersData?.max_supply}</span>
-              </OverviewItem>
-            </Overview>
-            <Tabs>
-              <Tab isActive={chartMatch !== null}>
-                <Link to={`/${coinId}/chart`}>Chart</Link>
-              </Tab>
-              <Tab isActive={priceMatch !== null}>
-                <Link to={`/${coinId}/price`}>Price</Link>
-              </Tab>
-            </Tabs>
-            <Switch>
-              <Route path={`/:coinId/price`}>
-                <Price />
-              </Route>
-              <Route path={`/:coinId/chart`}>
-                <Chart coinId={coinId} />
-              </Route>
-            </Switch>
-          </>
-        )}
-      </Container>
-    </>
+    <Wrap>
+      <SideComp />
+      <ContentBox>
+        <Link to="/">
+          <HomeBtn>
+            <FontAwesomeIcon icon={faHouse} />
+          </HomeBtn>
+        </Link>
+        <CoinCont />
+      </ContentBox>
+    </Wrap>
   );
 }
 export default Coin;

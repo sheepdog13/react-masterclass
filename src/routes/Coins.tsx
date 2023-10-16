@@ -67,9 +67,6 @@ const CoinListBox = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 4px;
-  a:hover {
-    background-color: #23253e;
-  }
 `;
 const Coin = styled.div`
   display: flex;
@@ -80,6 +77,9 @@ const Coin = styled.div`
   gap: 12px;
   background-color: ${(props) => props.theme.cardBgColor};
   color: ${(props) => props.theme.textColor};
+  &:hover {
+    background-color: ${(props) => props.theme.hoverColor};
+  }
 `;
 
 const CoinInfoBox = styled.div`

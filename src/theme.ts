@@ -8,6 +8,7 @@ export const darkTheme: DefaultTheme = {
   borderColor: "1px solid #bdc3c7",
   sideBarColor: "rgb(17, 19, 34)",
   modeBtnColor: "#ffff66",
+  hoverColor: "#23253e",
 };
 
 export const lightTheme: DefaultTheme = {
@@ -18,4 +19,5 @@ export const lightTheme: DefaultTheme = {
   borderColor: "1px solid #2c2d33",
   sideBarColor: "rgb(23, 53, 130)",
   modeBtnColor: "#EFB90B",
+  hoverColor: "#e6e6e6",
 };
