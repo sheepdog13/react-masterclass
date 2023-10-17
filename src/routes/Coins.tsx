@@ -157,7 +157,9 @@ function Coins() {
                         />
                         <span>{coin.name} &rarr;</span>
                       </CoinImgNameBox>
-                      <CurrentPrice>$ {coin.current_price}</CurrentPrice>
+                      <CurrentPrice>
+                        $ {coin.current_price.toLocaleString()}
+                      </CurrentPrice>
                     </CoinInfoBox>
                     <PercentBox>
                       <PriceChange>

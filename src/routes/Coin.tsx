@@ -16,7 +16,7 @@ import { fetchCoinInfo, fetchCoinTickers } from "api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import SideComp from "components/SideComp";
-import CoinCont from "components/CoinCont";
+import CoinContComp from "components/CoinContComp";
 interface RouteParams {
   coinId: string;
 }
@@ -84,8 +84,11 @@ const Wrap = styled.div`
   background-color: ${(props) => props.theme.bgColor};
 `;
 const ContentBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 40px 20px;
   margin-left: 20vw;
-  padding: 20px;
 `;
 const HomeBtn = styled.div`
   display: flex;
@@ -95,6 +98,7 @@ const HomeBtn = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${(props) => props.theme.cardBgColor};
+  font-size: 15px;
   &:hover {
     background-color: ${(props) => props.theme.hoverColor};
   }
@@ -123,7 +127,7 @@ function Coin() {
             <FontAwesomeIcon icon={faHouse} />
           </HomeBtn>
         </Link>
-        <CoinCont />
+        <CoinContComp />
       </ContentBox>
     </Wrap>
   );
