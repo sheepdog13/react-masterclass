@@ -89,6 +89,7 @@ const ContentBox = styled.div`
   height: 100%;
   padding: 40px 20px;
   margin-left: 20vw;
+  flex: 1 1 0%;
 `;
 const HomeBtn = styled.div`
   display: flex;

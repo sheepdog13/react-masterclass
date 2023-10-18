@@ -128,7 +128,9 @@ const PercentChange = styled.span`
 `;
 
 function Coins() {
-  const { isLoading, data } = useQuery<Icoin[]>("allCoins", fetchConinsgecko);
+  const { isLoading, data } = useQuery<Icoin[]>("allCoins", fetchConinsgecko, {
+    refetchInterval: 50000,
+  });
   return (
     <Wrap>
       {isLoading ? (
