@@ -1,3 +1,5 @@
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchCoinInfo } from "api";
 import { info } from "console";
 import { useQuery } from "react-query";
@@ -21,6 +23,9 @@ interface InfoData {
       usd: Number;
     };
     ath_change_percentage: {
+      usd: Number;
+    };
+    market_cap_change_percentage_24h_in_currency: {
       usd: Number;
     };
   };
@@ -75,13 +80,29 @@ const Price = styled.span`
   font-size: 36px;
   color: ${(props) => props.color};
 `;
+
+const Percent = styled.div`
+  display: flex;
+  font-size: 20px;
+  color: white;
+  background-color: ${(props) => props.color};
+  padding: 6px 12px;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  span:first-child {
+    padding-right: 12px;
+  }
+`;
 function CoinContComp() {
   const { coinId } = useParams<RouteParams>();
   const { isLoading: infoIsLoading, data: infoData } = useQuery<InfoData>(
     ["info", coinId],
     () => fetchCoinInfo(coinId)
   );
-  console.log(infoData?.market_data.ath_change_percentage.usd);
+  const changePercent = Number(
+    infoData?.market_data.market_cap_change_percentage_24h_in_currency.usd
+  );
   return (
     <>
       {infoIsLoading ? (
@@ -96,15 +117,19 @@ function CoinContComp() {
             <ImgPriceBox>
               <Img src={infoData?.image.small} />
               <Name>{infoData?.name}</Name>
-              <Price
-                color={
-                  !!infoData?.market_data.ath_change_percentage.usd
-                    ? "#52B455"
-                    : "#DC4F45"
-                }
-              >
+              <Price color={changePercent >= 0 ? "#52B455" : "#DC4F45"}>
                 $ {infoData?.market_data.current_price.usd.toLocaleString()}
               </Price>
+              <Percent color={changePercent >= 0 ? "#52B455" : "#DC4F45"}>
+                <span>
+                  {changePercent >= 0 ? (
+                    <FontAwesomeIcon icon={faCaretUp} />
+                  ) : (
+                    <FontAwesomeIcon icon={faCaretDown} />
+                  )}
+                </span>
+                <span>{changePercent.toFixed(2)}%</span>
+              </Percent>
             </ImgPriceBox>
           </InfoBox>
         </>
