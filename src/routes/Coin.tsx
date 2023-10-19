@@ -17,6 +17,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import SideComp from "components/SideComp";
 import CoinContComp from "components/CoinContComp";
+import ChartComp from "components/ChartComp";
 interface RouteParams {
   coinId: string;
 }
@@ -129,6 +130,7 @@ function Coin() {
           </HomeBtn>
         </Link>
         <CoinContComp />
+        <ChartComp/>
       </ContentBox>
     </Wrap>
   );
