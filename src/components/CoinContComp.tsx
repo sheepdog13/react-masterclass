@@ -165,7 +165,6 @@ function CoinContComp() {
       refetchInterval: 50000,
     }
   );
-  console.log(infoData?.market_data);
   const changePercent = Number(
     infoData?.market_data.market_cap_change_percentage_24h_in_currency.usd
   );

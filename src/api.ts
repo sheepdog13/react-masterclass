@@ -15,7 +15,7 @@ export function fetchCoinInfo(coinId: string) {
   ).then((response) => response.json());
 }
 
-export function fetchCoinTickers(coinId: string, day: Number) {
+export function fetchCoinTickers(coinId: string, day: any) {
   return fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/ohlc?vs_currency=usd&days=${day}
   `).then((response) => response.json());
 }

@@ -147,7 +147,7 @@ function Coins() {
               {data?.slice(0, 100).map((coin) => (
                 <Link
                   to={{
-                    pathname: `/${coin.id}`,
+                    pathname: `/${coin.id}/chart/1`,
                     state: { name: coin.name },
                   }}
                 >

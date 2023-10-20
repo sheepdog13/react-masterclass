@@ -17,7 +17,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import SideComp from "components/SideComp";
 import CoinContComp from "components/CoinContComp";
-import ChartComp from "components/ChartComp";
+import ChartContComp from "components/ChartContComp";
 interface RouteParams {
   coinId: string;
 }
@@ -109,7 +109,7 @@ const HomeBtn = styled.div`
 function Coin() {
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
-  const day = 365;
+  const day = "365";
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
   const { isLoading: infoIsLoading, data: infoData } = useQuery<InfoData>(
@@ -130,7 +130,7 @@ function Coin() {
           </HomeBtn>
         </Link>
         <CoinContComp />
-        <ChartComp/>
+        <ChartContComp />
       </ContentBox>
     </Wrap>
   );
