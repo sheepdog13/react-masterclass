@@ -1,11 +1,7 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { fetchCoins, fetchConinsgecko } from "../api";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { isDarkAtom } from "atom";
+import { fetchConinsgecko } from "../api";
 import WelcomComp from "components/WelcomeComp";
 import SideComp from "components/SideComp";
 
@@ -50,6 +46,8 @@ const ContentBox = styled.div`
 
 const ListTitleBox = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 10px;
   padding-left: 15px;
   height: 50px;
@@ -59,6 +57,16 @@ const ListTitleBox = styled.div`
     font-size: 20px;
     color: ${(props) => props.theme.textColor};
     align-items: center;
+  }
+`;
+
+const Gecko = styled.span`
+  margin-right: 10px;
+  color: #5b627b !important;
+  font-size: 12px !important;
+  a {
+    padding-left: 5px;
+    text-decoration: underline;
   }
 `;
 
@@ -142,12 +150,18 @@ function Coins() {
             <WelcomComp />
             <ListTitleBox>
               <span>Coin List</span>
+              <Gecko>
+                Powered by
+                <Link to={"https://www.coingecko.com/en/api/documentation"}>
+                  CoinGecko
+                </Link>
+              </Gecko>
             </ListTitleBox>
             <CoinListBox>
               {data?.slice(0, 100).map((coin) => (
                 <Link
                   to={{
-                    pathname: `/${coin.id}/chart/1`,
+                    pathname: `/${coin.id}/chart/max`,
                     state: { name: coin.name },
                   }}
                 >
