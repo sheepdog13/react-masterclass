@@ -1,23 +1,12 @@
-import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
-import {
-  Link,
-  Route,
-  Switch,
-  useLocation,
-  useParams,
-  useRouteMatch,
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Price from "./Price";
-import Chart from "./Chart";
-import { useQuery } from "react-query";
-import { fetchCoinInfo, fetchCoinTickers } from "api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import SideComp from "components/SideComp";
 import CoinContComp from "components/CoinContComp";
 import ChartContComp from "components/ChartContComp";
+import { isDarkAtom } from "atom";
+import { useRecoilValue } from "recoil";
 interface RouteParams {
   coinId: string;
 }
@@ -99,33 +88,24 @@ const HomeBtn = styled.div`
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.theme.cardBgColor};
+  background-color: ${(props) => props.color};
+  color: white;
   font-size: 15px;
   &:hover {
-    background-color: ${(props) => props.theme.hoverColor};
+    background-color: white;
+    color: ${(props) => props.theme.sideBarColor};
   }
 `;
 
 function Coin() {
-  const { coinId } = useParams<RouteParams>();
-  const { state } = useLocation<RouteState>();
-  const day = "365";
-  const priceMatch = useRouteMatch("/:coinId/price");
-  const chartMatch = useRouteMatch("/:coinId/chart");
-  const { isLoading: infoIsLoading, data: infoData } = useQuery<InfoData>(
-    ["info", coinId],
-    () => fetchCoinInfo(coinId)
-  );
-  const { isLoading: tickIsLoading, data: tickData } = useQuery<InfoData>(
-    ["tick", coinId],
-    () => fetchCoinTickers(coinId, day)
-  );
+  const isDark = useRecoilValue(isDarkAtom);
+
   return (
     <Wrap>
       <SideComp />
       <ContentBox>
         <Link to="/">
-          <HomeBtn>
+          <HomeBtn color={isDark ? "#1d1f33" : "#173582"}>
             <FontAwesomeIcon icon={faHouse} />
           </HomeBtn>
         </Link>

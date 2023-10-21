@@ -1,9 +1,10 @@
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fetchCoinInfo } from "api";
-import { info } from "console";
+import { isDarkAtom } from "atom";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
 interface RouteParams {
@@ -70,7 +71,7 @@ const RankNameBox = styled.div`
 
 const Rank = styled.span`
   padding: 8px 12px;
-  background-color: #202740;
+  background-color: ${(props) => props.theme.secondColor};
   border-radius: 4px;
   &:first-child {
     margin-right: 10px;
@@ -132,7 +133,7 @@ const PriceInfoBox = styled.div`
   flex-direction: column;
   padding: 20px;
   gap: 20px;
-  background-color: #151829;
+  background-color: ${(props) => props.theme.secondColor};
 `;
 
 const High = styled.span`
@@ -153,7 +154,7 @@ const PriceInfoForm = styled.div`
   }
   span:last-child {
     font-size: 18px;
-    color: white;
+    color: ${(props) => props.color};
   }
 `;
 function CoinContComp() {
@@ -168,6 +169,7 @@ function CoinContComp() {
   const changePercent = Number(
     infoData?.market_data.market_cap_change_percentage_24h_in_currency.usd
   );
+  const isDark = useRecoilValue(isDarkAtom);
   return (
     <>
       {infoIsLoading ? (
@@ -200,7 +202,7 @@ function CoinContComp() {
               </Percent>
             </ImgPriceBox>
             <PriceInfoCont>
-              <PriceInfoBox>
+              <PriceInfoBox color={isDark ? "black" : "white"}>
                 <PriceInfoForm>
                   <span>High</span>
                   <High>

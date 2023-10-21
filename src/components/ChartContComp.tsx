@@ -9,8 +9,9 @@ import {
 } from "react-router-dom";
 import styled from "styled-components";
 import ChartComp from "./ChartComp";
-import CandleComp from "./CandleComp";
-import { useState } from "react";
+import { inherits } from "util";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "atom";
 
 interface RouteParams {
   coinId: string;
@@ -36,7 +37,7 @@ const BtnBox = styled.div`
   flex-direction: row;
   gap: 12px;
   margin: 8px 0px;
-  background-color: #151829;
+  background-color: ${(props) => props.theme.secondColor};
   padding: 8px;
   border-radius: 8px;
 `;
@@ -48,15 +49,14 @@ const Btn = styled.div<{ isActive: boolean }>`
   font-size: 20px;
   font-weight: 400;
   background-color: ${(props) =>
-    props.isActive ? "rgb(17, 19, 34)" : "rgb(21, 25, 42)"};
+    props.isActive ? props.theme.sideBarColor : props.theme.secondColor};
   height: 36px;
   padding: 8px;
   border-radius: 10px;
   border-width: thick;
-  border-color: rgb(17, 19, 34);
-  color: ${(props) => (props.isActive ? "white" : "rgb(90, 97, 122)")};
+  color: ${(props) => (props.isActive ? "white" : "#9da2b4")};
   &:hover {
-    background-color: ${(props) => props.theme.hoverColor};
+    color: ${(props) => (props.isActive ? "none" : "white")};
   }
 `;
 
