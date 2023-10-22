@@ -4,6 +4,7 @@ import ApexCharts from "react-apexcharts";
 import { isDarkAtom } from "atom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import LoadingComp from "./LoadingComp";
 
 interface CharProps {
   coinId: string;
@@ -36,7 +37,9 @@ function ChartComp(props: CharProps) {
   return (
     <>
       {isLoading ? (
-        <>LoadingComp</>
+        <>
+          <LoadingComp />
+        </>
       ) : (
         <>
           <ChartBlock>

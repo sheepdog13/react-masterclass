@@ -1,4 +1,6 @@
 {
+  "typeRoots": ["src/types"],
+
   "compilerOptions": {
     "target": "es6", //어떤버전의 js로 컴파일할지 정의
     "lib": [

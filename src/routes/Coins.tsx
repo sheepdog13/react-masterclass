@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { fetchConinsgecko } from "../api";
 import WelcomComp from "components/WelcomeComp";
 import SideComp from "components/SideComp";
+import LoadingComp from "components/LoadingComp";
 
 interface Icoin {
   id: string;
@@ -142,7 +143,9 @@ function Coins() {
   return (
     <Wrap>
       {isLoading ? (
-        <>LodingComp만들기</>
+        <>
+          <LoadingComp />
+        </>
       ) : (
         <>
           <SideComp />
