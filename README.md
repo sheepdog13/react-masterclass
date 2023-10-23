@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# SHEEP FINCE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> coingecko api를 활용한 coin tracker
 
-## Available Scripts
+[![NPM Version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Downloads Stats][npm-downloads]][npm-url]
 
-In the project directory, you can run:
+한 두 문단으로 프로젝트 소개 글을 작성합니다.
 
-### `npm start`
+![](../header.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 설치 방법
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+OS X & 리눅스:
 
-### `npm test`
+```sh
+npm install my-crazy-module --save
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+윈도우:
 
-### `npm run build`
+```sh
+edit autoexec.bat
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 사용 예제
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+스크린 샷과 코드 예제를 통해 사용 방법을 자세히 설명합니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+_더 많은 예제와 사용법은 [Wiki][wiki]를 참고하세요._
 
-### `npm run eject`
+## 개발 환경 설정
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+모든 개발 의존성 설치 방법과 자동 테스트 슈트 실행 방법을 운영체제 별로 작성합니다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+make install
+npm test
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 업데이트 내역
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- 0.2.1
+  - 수정: 문서 업데이트 (모듈 코드 동일)
+- 0.2.0
+  - 수정: `setDefaultXYZ()` 메서드 제거
+  - 추가: `init()` 메서드 추가
+- 0.1.1
+     \* 버그 수정: `baz()` 메서드 호출 시 부팅되지 않는 현상 (@컨트리뷰터 감사합니다!)
+- 0.1.0
+  - 첫 출시
+  - 수정: `foo()` 메서드 네이밍을 `bar()`로 수정
+- 0.0.1
+  - 작업 진행 중
 
-## Learn More
+## 정보
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+이름 – [@트위터 주소](https://twitter.com/dbader_org) – 이메일주소@example.com
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+XYZ 라이센스를 준수하며 `LICENSE`에서 자세한 정보를 확인할 수 있습니다.
 
-### Code Splitting
+[https://github.com/yourname/github-link](https://github.com/dbader/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 기여 방법
 
-### Analyzing the Bundle Size
+1. (<https://github.com/yourname/yourproject/fork>)을 포크합니다.
+2. (`git checkout -b feature/fooBar`) 명령어로 새 브랜치를 만드세요.
+3. (`git commit -am 'Add some fooBar'`) 명령어로 커밋하세요.
+4. (`git push origin feature/fooBar`) 명령어로 브랜치에 푸시하세요.
+5. 풀리퀘스트를 보내주세요.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<!-- Markdown link & img dfn's -->
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/datadog-metrics
+[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
+[wiki]: https://github.com/yourname/yourproject/wiki

@@ -9,9 +9,6 @@ import {
 } from "react-router-dom";
 import styled from "styled-components";
 import ChartComp from "./ChartComp";
-import { inherits } from "util";
-import { useRecoilValue } from "recoil";
-import { isDarkAtom } from "atom";
 
 interface RouteParams {
   coinId: string;
