@@ -41,7 +41,7 @@ function SideComp() {
   const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
   return (
     <Side>
-      <Link to="/react-masterclass">
+      <Link to="/sheep-fince">
         <Title>SHEEP FINACE</Title>
       </Link>
       <ModeBtn onClick={toggleDarkAtom}>

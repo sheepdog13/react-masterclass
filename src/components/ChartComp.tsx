@@ -11,13 +11,13 @@ interface CharProps {
   isLine: boolean;
   day: string;
 }
-const ChartBlock = styled.div`
+const ChartBox = styled.div`
   justify-items: flex-end;
   align-items: center;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  padding-top: 60px;
+  padding: 60px 30px;
 `;
 
 function ChartComp(props: CharProps) {
@@ -42,7 +42,7 @@ function ChartComp(props: CharProps) {
         </>
       ) : (
         <>
-          <ChartBlock>
+          <ChartBox>
             <ApexCharts
               type={props.isLine ? "line" : "candlestick"}
               options={{
@@ -92,10 +92,10 @@ function ChartComp(props: CharProps) {
                     : [],
                 },
               ]}
-              width="1000"
+              width="100%"
               height="300"
             />
-          </ChartBlock>
+          </ChartBox>
         </>
       )}
     </>

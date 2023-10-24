@@ -10,20 +10,6 @@
 
 ![](../header.png)
 
-## 설치 방법
-
-OS X & 리눅스:
-
-```sh
-npm install my-crazy-module --save
-```
-
-윈도우:
-
-```sh
-edit autoexec.bat
-```
-
 ## 사용 예제
 
 스크린 샷과 코드 예제를 통해 사용 방법을 자세히 설명합니다.

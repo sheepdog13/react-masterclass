@@ -1,7 +1,7 @@
 {
   "name": "react-masterclass",
   "version": "0.1.0",
-  "homepage": "https://sheepdog13.github.io/react-masterclass/",
+  "homepage": "https://sheepdog13.github.io/sheep-fince/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",

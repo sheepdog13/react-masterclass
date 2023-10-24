@@ -43,7 +43,7 @@ function Coin() {
     <Wrap>
       <SideComp />
       <ContentBox>
-        <Link to="/react-masterclass">
+        <Link to="/sheep-fince">
           <HomeBtn color={isDark ? "#1d1f33" : "#173582"}>
             <FontAwesomeIcon icon={faHouse} />
           </HomeBtn>
