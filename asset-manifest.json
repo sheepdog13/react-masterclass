@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/react-masterclass/static/js/main.e24dd8ea.js",
-    "static/js/787.13312aec.chunk.js": "/react-masterclass/static/js/787.13312aec.chunk.js",
-    "static/media/CuteLoadingImg.gif": "/react-masterclass/static/media/CuteLoadingImg.087202771a02a2c6bfc8.gif",
-    "index.html": "/react-masterclass/index.html",
-    "main.e24dd8ea.js.map": "/react-masterclass/static/js/main.e24dd8ea.js.map",
-    "787.13312aec.chunk.js.map": "/react-masterclass/static/js/787.13312aec.chunk.js.map"
+    "main.js": "/sheep-fince/static/js/main.9526f499.js",
+    "static/js/787.13312aec.chunk.js": "/sheep-fince/static/js/787.13312aec.chunk.js",
+    "static/media/CuteLoadingImg.gif": "/sheep-fince/static/media/CuteLoadingImg.087202771a02a2c6bfc8.gif",
+    "index.html": "/sheep-fince/index.html",
+    "main.9526f499.js.map": "/sheep-fince/static/js/main.9526f499.js.map",
+    "787.13312aec.chunk.js.map": "/sheep-fince/static/js/787.13312aec.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.e24dd8ea.js"
+    "static/js/main.9526f499.js"
   ]
 }
