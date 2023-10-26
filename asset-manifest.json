@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/sheep-fince/static/js/main.9526f499.js",
+    "main.js": "/sheep-fince/static/js/main.e3819759.js",
     "static/js/787.13312aec.chunk.js": "/sheep-fince/static/js/787.13312aec.chunk.js",
     "static/media/CuteLoadingImg.gif": "/sheep-fince/static/media/CuteLoadingImg.087202771a02a2c6bfc8.gif",
     "index.html": "/sheep-fince/index.html",
-    "main.9526f499.js.map": "/sheep-fince/static/js/main.9526f499.js.map",
+    "main.e3819759.js.map": "/sheep-fince/static/js/main.e3819759.js.map",
     "787.13312aec.chunk.js.map": "/sheep-fince/static/js/787.13312aec.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.9526f499.js"
+    "static/js/main.e3819759.js"
   ]
 }
