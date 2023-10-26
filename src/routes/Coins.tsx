@@ -155,7 +155,10 @@ function Coins() {
               <span>Coin List</span>
               <Gecko>
                 Powered by
-                <Link to={"/https://www.coingecko.com/en/api/documentation"}>
+                <Link
+                  target="_blank"
+                  to={"https://www.coingecko.com/en/api/documentation"}
+                >
                   CoinGecko
                 </Link>
               </Gecko>
