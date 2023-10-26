@@ -2,15 +2,31 @@
 
 > coingecko api를 활용한 coin tracker
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+coingeckoapi를 활용해 coin의 정보와 가격을 실시간으로 확인하고 apex
 
-한 두 문단으로 프로젝트 소개 글을 작성합니다.
+## 🗓️ 기간
 
-![](../header.png)
+### 2023.10.7 ~ 2023.10.21
 
-## 사용 예제
+## ⚙️ 기술스택
+
+### ✔️ Frond-end
+
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
+<img src="https://img.shields.io/badge/recoil-3578E5?style=for-the-badge&logo=recoil&logoColor=white">
+<img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white">
+
+## 💡 프로젝트를 만든 이유
+
+### react-query의 간소화된 데이터 가져오기와 자동 데이터 캐싱을 활용하고 recoil의 전역 상태관리를 연습하기에 coin tracker가 알맞아 보였기 때문입니다.
+
+## 기능 설명
+
+<figure>
+    <img src="homepage.png">
+</figure>
+
+### 배포 url: [https://sheepdog13.github.io/sheep-fince/](https://sheepdog13.github.io/sheep-fince/)
 
 스크린 샷과 코드 예제를 통해 사용 방법을 자세히 설명합니다.
 
